@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient Portal – HealthCare Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/patient.css" />
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo"><i class="fa-solid fa-stethoscope"></i></div>
+    <nav class="sidebar-nav">
+      <div class="nav-item" onclick="window.location='../index.html'">
+        <i class="fa-solid fa-house"></i><span>Home</span>
+      </div>
+      <div class="nav-item" onclick="window.location='page1.html'">
+        <i class="fa-solid fa-user-doctor"></i><span>Doctors</span>
+      </div>
+      <div class="nav-item" onclick="window.location='page2.html'">
+        <i class="fa-solid fa-file-medical"></i><span>Records</span>
+      </div>
+      <div class="nav-item active">
+        <i class="fa-regular fa-circle-user"></i><span>Profile</span>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Wrapper -->
+  <div class="main-wrapper">
+
+    <!-- Navbar -->
+    <header class="navbar">
+      <button class="hamburger"><i class="fa-solid fa-bars"></i></button>
+      <div class="navbar-brand">
+        <span class="user-name" style="font-size:16px;">Patient Portal</span>
+      </div>
+      <div class="navbar-spacer"></div>
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search doctors, hospitals, services..." />
+      </div>
+      <div class="date-pill">Sat, 14 Jun 2026</div>
+      <div class="navbar-actions">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span class="badge"></span></button>
+        <div class="avatar">NA</div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="page-content patient-page">
+      <div class="patient-grid">
+
+        <!-- LEFT: Profile Card -->
+        <div class="profile-col">
+          <!-- Hero card -->
+          <div class="profile-hero">
+            <div class="profile-avatar-wrap">
+              <div class="profile-avatar">NA</div>
+              <button class="camera-btn" title="Change photo"><i class="fa-solid fa-camera"></i></button>
+            </div>
+            <div class="profile-name">Nadeef Ahmed</div>
+            <div class="profile-pid">Patient ID: BD-2026-04821</div>
+            <div class="profile-pills">
+              <span class="ppill ppill-blood"><i class="fa-solid fa-droplet"></i> B+</span>
+              <span class="ppill ppill-age">34 yrs</span>
+              <span class="ppill ppill-gender">Male</span>
+            </div>
+          </div>
+
+          <!-- Info rows -->
+          <div class="profile-info-card">
+            <div class="info-row">
+              <div class="info-icon"><i class="fa-regular fa-calendar"></i></div>
+              <div>
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value">15 March 1992</div>
+              </div>
+            </div>
+            <div class="info-divider"></div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fa-solid fa-droplet"></i></div>
+              <div>
+                <div class="info-label">Blood Group</div>
+                <div class="info-value">B Positive (B+)</div>
+              </div>
+            </div>
+            <div class="info-divider"></div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <div class="info-label">Mobile</div>
+                <div class="info-value">+880 1711-234567</div>
+              </div>
+            </div>
+            <div class="info-divider"></div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fa-regular fa-envelope"></i></div>
+              <div>
+                <div class="info-label">Email</div>
+                <div class="info-value">nadeef.ahmed@email.com</div>
+              </div>
+            </div>
+            <div class="info-divider"></div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div class="info-label">Address</div>
+                <div class="info-value">Dhanmondi, Dhaka 1205, Bangladesh</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Tabs + Content -->
+        <div class="profile-content-col">
+
+          <!-- Tabs -->
+          <div class="profile-tabs">
+            <button class="ptab" onclick="switchTab('overview', this)">Overview</button>
+            <button class="ptab active" onclick="switchTab('medical', this)">Medical History</button>
+            <button class="ptab" onclick="switchTab('doctors', this)">Saved Doctors</button>
+            <button class="ptab" onclick="switchTab('settings', this)">Settings</button>
+          </div>
+
+          <!-- ── TAB: Medical History ── -->
+          <div class="tab-panel active" id="tab-medical">
+
+            <div class="tab-section-header">
+              <div>
+                <h2 class="tab-section-title">Medical History</h2>
+                <p class="tab-section-sub">5 conditions recorded • Last updated Jun 2026</p>
+              </div>
+            </div>
+
+            <!-- Condition cards -->
+            <div class="condition-list">
+
+              <!-- Type 2 Diabetes -->
+              <div class="condition-card">
+                <div class="condition-icon ci-orange">
+                  <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="condition-info">
+                  <div class="condition-top">
+                    <span class="condition-name">Type 2 Diabetes Mellitus</span>
+                    <span class="condition-badge badge-ongoing">Ongoing</span>
+                  </div>
+                  <div class="condition-meta">
+                    <span><i class="fa-regular fa-clock"></i> Diagnosed: March 2019</span>
+                    <span><i class="fa-solid fa-user-doctor"></i> Dr. Kamal Hossain</span>
+                  </div>
+                  <div class="condition-note">
+                    HbA1c 6.8% (last checked Apr 2026). Controlled with medication.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Essential Hypertension -->
+              <div class="condition-card">
+                <div class="condition-icon ci-red">
+                  <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="condition-info">
+                  <div class="condition-top">
+                    <span class="condition-name">Essential Hypertension</span>
+                    <span class="condition-badge badge-ongoing">Ongoing</span>
+                  </div>
+                  <div class="condition-meta">
+                    <span><i class="fa-regular fa-clock"></i> Diagnosed: January 2021</span>
+                    <span><i class="fa-solid fa-user-doctor"></i> Dr. Farzana Rahman</span>
+                  </div>
+                  <div class="condition-note">
+                    BP: 128/82 mmHg average. On Amlodipine 5mg.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Previously Prescribed Medicines -->
+            <div class="medicines-section">
+              <div class="medicines-header">
+                <div>
+                  <h3 class="medicines-title">Previously Prescribed Medicines</h3>
+                  <p class="medicines-sub">Your previously prescribed medicines from past consultations</p>
+                </div>
+                <button class="view-all-btn"><i class="fa-regular fa-file-lines"></i> View All</button>
+              </div>
+
+              <div class="medicines-table-wrap">
+                <table class="medicines-table">
+                  <thead>
+                    <tr>
+                      <th>Medicine Name</th>
+                      <th>Dosage</th>
+                      <th>Frequency</th>
+                      <th>Prescribed By</th>
+                      <th>Duration</th>
+                      <th>Date</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="med-name-cell">
+                          <div class="med-pill-icon"><i class="fa-solid fa-capsules"></i></div>
+                          Metformin 500mg
+                        </div>
+                      </td>
+                      <td>500 mg</td>
+                      <td>Twice daily<br><span class="freq-note">(After meals)</span></td>
+                      <td>Dr. Kamal Hossain</td>
+                      <td>30 days</td>
+                      <td>20 Apr 2026</td>
+                      <td><button class="view-det-btn">View Details</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="med-name-cell">
+                          <div class="med-pill-icon"><i class="fa-solid fa-capsules"></i></div>
+                          Amlodipine 5mg
+                        </div>
+                      </td>
+                      <td>5 mg</td>
+                      <td>Once daily<br><span class="freq-note">(Morning)</span></td>
+                      <td>Dr. Farzana Rahman</td>
+                      <td>30 days</td>
+                      <td>15 Apr 2026</td>
+                      <td><button class="view-det-btn">View Details</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="med-name-cell">
+                          <div class="med-pill-icon"><i class="fa-solid fa-capsules"></i></div>
+                          Atorvastatin 10mg
+                        </div>
+                      </td>
+                      <td>10 mg</td>
+                      <td>Once daily<br><span class="freq-note">(Night)</span></td>
+                      <td>Dr. Kamal Hossain</td>
+                      <td>30 days</td>
+                      <td>10 Apr 2026</td>
+                      <td><button class="view-det-btn">View Details</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div><!-- /#tab-medical -->
+
+          <!-- ── TAB: Overview (placeholder) ── -->
+          <div class="tab-panel" id="tab-overview">
+            <div class="tab-placeholder">
+              <i class="fa-solid fa-chart-line"></i>
+              <p>Overview coming soon</p>
+            </div>
+          </div>
+
+          <!-- ── TAB: Saved Doctors (placeholder) ── -->
+          <div class="tab-panel" id="tab-doctors">
+            <div class="tab-placeholder">
+              <i class="fa-solid fa-user-doctor"></i>
+              <p>Saved Doctors coming soon</p>
+            </div>
+          </div>
+
+          <!-- ── TAB: Settings (placeholder) ── -->
+          <div class="tab-panel" id="tab-settings">
+            <div class="tab-placeholder">
+              <i class="fa-solid fa-gear"></i>
+              <p>Settings coming soon</p>
+            </div>
+          </div>
+
+        </div><!-- /.profile-content-col -->
+      </div><!-- /.patient-grid -->
+    </main>
+  </div>
+
+  <script src="../js/script.js"></script>
+  <script>
+    function switchTab(id, btn) {
+      document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + id).classList.add('active');
+    }
+  </script>
+</body>
+</html>

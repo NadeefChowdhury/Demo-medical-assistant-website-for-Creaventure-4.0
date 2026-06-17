@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Ambulance – HealthCare Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/ambulance.css" />
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo"><i class="fa-solid fa-stethoscope"></i></div>
+    <nav class="sidebar-nav">
+      <div class="nav-item" onclick="window.location='../index.html'">
+        <i class="fa-solid fa-house"></i><span>Home</span>
+      </div>
+      <div class="nav-item" onclick="window.location='page1.html'">
+        <i class="fa-solid fa-user-doctor"></i><span>Doctors</span>
+      </div>
+      <div class="nav-item" onclick="window.location='page2.html'">
+        <i class="fa-solid fa-file-medical"></i><span>Records</span>
+      </div>
+      <div class="nav-item" onclick="window.location='page4.html'">
+        <i class="fa-regular fa-circle-user"></i><span>Profile</span>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="navbar">
+      <button class="hamburger"><i class="fa-solid fa-bars"></i></button>
+      <div class="navbar-brand">
+        <span class="greeting">Good morning,</span>
+        <span class="user-name">Nadeef Ahmed</span>
+      </div>
+      <div class="patient-id">Patient ID: <span>BD-2026-04821</span></div>
+      <div class="navbar-spacer"></div>
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search doctors, hospitals, services..." />
+      </div>
+      <div class="date-pill">Sat, 14 Jun 2026</div>
+      <div class="navbar-actions">
+        <button class="icon-btn"><i class="fa-regular fa-bell"></i><span class="badge"></span></button>
+        <div class="avatar">NA</div>
+      </div>
+    </header>
+
+    <main class="amb-page">
+
+      <!-- LEFT PANEL -->
+      <div class="amb-left">
+
+        <!-- Emergency Hero -->
+        <div class="emergency-hero">
+          <div class="sos-wrap">
+            <button class="sos-btn" id="sosBtn" onmousedown="startSOS()" onmouseup="stopSOS()" ontouchstart="startSOS()" ontouchend="stopSOS()">
+              <i class="fa-solid fa-bolt"></i>
+              <span class="sos-label">SOS</span>
+              <span class="sos-sub">PRESS &amp; HOLD</span>
+            </button>
+            <svg class="sos-ring" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="3"/>
+              <circle cx="60" cy="60" r="54" fill="none" stroke="#fff" stroke-width="3"
+                stroke-dasharray="339" stroke-dashoffset="339" stroke-linecap="round" id="sosProgress"
+                style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset .05s linear;"/>
+            </svg>
+          </div>
+          <div class="hero-info">
+            <h1 class="hero-title">Emergency Help</h1>
+            <p class="hero-sub">Press SOS to alert all nearby services instantly</p>
+            <div class="gps-bar">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Mirpur-10, Dhaka 1216 • GPS Active</span>
+              <i class="fa-solid fa-circle-check gps-check"></i>
+            </div>
+            <div class="emergency-numbers">
+              <div class="emg-num">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span class="emg-val">999</span>
+                <span class="emg-name">National Emergency</span>
+              </div>
+              <div class="emg-divider"></div>
+              <div class="emg-num">
+                <i class="fa-solid fa-fire-flame-curved"></i>
+                <span class="emg-val">102</span>
+                <span class="emg-name">Fire Service</span>
+              </div>
+              <div class="emg-divider"></div>
+              <div class="emg-num">
+                <i class="fa-solid fa-wifi"></i>
+                <span class="emg-val">100</span>
+                <span class="emg-name">Police</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ambulance List -->
+        <div class="amb-list-section">
+          <div class="amb-list-header">
+            <div class="amb-list-title">Nearby Ambulances <span class="avail-count">8 available</span></div>
+            <div class="amb-filter-tabs">
+              <button class="amb-tab active" onclick="filterAmb('all',this)">All</button>
+              <button class="amb-tab" onclick="filterAmb('available',this)">Available</button>
+            </div>
+          </div>
+          <div class="amb-list" id="ambList">
+
+            <div class="amb-item" data-status="available">
+              <div class="amb-icon"><i class="fa-solid fa-truck-medical"></i></div>
+              <div class="amb-info">
+                <div class="amb-name-row"><span class="amb-name">City Ambulance Service</span><span class="avail-badge">Available</span></div>
+                <div class="amb-type">Advanced Life Support • 2 Paramedics</div>
+                <div class="amb-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> 0.8 km</span>
+                  <span><i class="fa-regular fa-clock"></i> ETA: <strong class="eta-fast">5 mins</strong></span>
+                  <span><i class="fa-solid fa-star star-icon"></i> 4.8</span>
+                  <span class="amb-price">৳ 1,200</span>
+                </div>
+              </div>
+              <div class="amb-action">
+                <button class="call-btn"><i class="fa-solid fa-phone"></i> Call Now</button>
+                <div class="amb-id">DHA-AMB-0041</div>
+              </div>
+            </div>
+
+            <div class="amb-item" data-status="available">
+              <div class="amb-icon"><i class="fa-solid fa-truck-medical"></i></div>
+              <div class="amb-info">
+                <div class="amb-name-row"><span class="amb-name">Dhaka Emergency Care</span><span class="avail-badge">Available</span></div>
+                <div class="amb-type">Basic Life Support • 1 EMT + Driver</div>
+                <div class="amb-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> 1.2 km</span>
+                  <span><i class="fa-regular fa-clock"></i> ETA: <strong class="eta-medium">8 mins</strong></span>
+                  <span><i class="fa-solid fa-star star-icon"></i> 4.6</span>
+                  <span class="amb-price">৳ 900</span>
+                </div>
+              </div>
+              <div class="amb-action">
+                <button class="call-btn"><i class="fa-solid fa-phone"></i> Call Now</button>
+                <div class="amb-id">DHA-AMB-0087</div>
+              </div>
+            </div>
+
+            <div class="amb-item" data-status="available">
+              <div class="amb-icon"><i class="fa-solid fa-truck-medical"></i></div>
+              <div class="amb-info">
+                <div class="amb-name-row"><span class="amb-name">LifeGuard Ambulance</span><span class="avail-badge">Available</span></div>
+                <div class="amb-type">Advanced Life Support • 2 Paramedics</div>
+                <div class="amb-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> 1.5 km</span>
+                  <span><i class="fa-regular fa-clock"></i> ETA: <strong class="eta-fast">7 mins</strong></span>
+                  <span><i class="fa-solid fa-star star-icon"></i> 4.7</span>
+                  <span class="amb-price">৳ 1,100</span>
+                </div>
+              </div>
+              <div class="amb-action">
+                <button class="call-btn"><i class="fa-solid fa-phone"></i> Call Now</button>
+                <div class="amb-id">DHA-AMB-0012</div>
+              </div>
+            </div>
+
+            <div class="amb-item" data-status="available">
+              <div class="amb-icon"><i class="fa-solid fa-truck-medical"></i></div>
+              <div class="amb-info">
+                <div class="amb-name-row"><span class="amb-name">Rapid Response Ambulance</span><span class="avail-badge">Available</span></div>
+                <div class="amb-type">Basic Life Support • 1 EMT + Driver</div>
+                <div class="amb-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> 1.8 km</span>
+                  <span><i class="fa-regular fa-clock"></i> ETA: <strong class="eta-fast">6 mins</strong></span>
+                  <span><i class="fa-solid fa-star star-icon"></i> 4.5</span>
+                  <span class="amb-price">৳ 850</span>
+                </div>
+              </div>
+              <div class="amb-action">
+                <button class="call-btn"><i class="fa-solid fa-phone"></i> Call Now</button>
+                <div class="amb-id">DHA-AMB-0093</div>
+              </div>
+            </div>
+
+            <div class="amb-item" data-status="available">
+              <div class="amb-icon"><i class="fa-solid fa-truck-medical"></i></div>
+              <div class="amb-info">
+                <div class="amb-name-row"><span class="amb-name">Medicare Ambulance</span><span class="avail-badge">Available</span></div>
+                <div class="amb-type">Advanced Life Support • 2 Paramedics</div>
+                <div class="amb-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> 2.1 km</span>
+                  <span><i class="fa-regular fa-clock"></i> ETA: <strong class="eta-medium">9 mins</strong></span>
+                  <span><i class="fa-solid fa-star star-icon"></i> 4.6</span>
+                  <span class="amb-price">৳ 1,000</span>
+                </div>
+              </div>
+              <div class="amb-action">
+                <button class="call-btn"><i class="fa-solid fa-phone"></i> Call Now</button>
+                <div class="amb-id">DHA-AMB-0029</div>
+              </div>
+            </div>
+
+            <div class="amb-item" data-status="available">
+              <div class="amb-icon"><i class="fa-solid fa-truck-medical"></i></div>
+              <div class="amb-info">
+                <div class="amb-name-row"><span class="amb-name">Popular Ambulance Service</span><span class="avail-badge">Available</span></div>
+                <div class="amb-type">Basic Life Support • 1 EMT + Driver</div>
+                <div class="amb-meta">
+                  <span><i class="fa-solid fa-location-dot"></i> 2.3 km</span>
+                  <span><i class="fa-regular fa-clock"></i> ETA: <strong class="eta-medium">10 mins</strong></span>
+                  <span><i class="fa-solid fa-star star-icon"></i> 4.4</span>
+                  <span class="amb-price">৳ 800</span>
+                </div>
+              </div>
+              <div class="amb-action">
+                <button class="call-btn"><i class="fa-solid fa-phone"></i> Call Now</button>
+                <div class="amb-id">DHA-AMB-0065</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT PANEL: Live Map -->
+      <div class="amb-map-panel">
+        <div class="map-header">
+          <div class="map-title-row">
+            <i class="fa-solid fa-location-arrow map-title-icon"></i>
+            <span class="map-title">Live Emergency Map</span>
+          </div>
+          <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+        </div>
+        <div class="live-map-container">
+          <svg viewBox="0 0 860 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <rect width="860" height="600" fill="#e8ede8"/>
+            <!-- Parks -->
+            <rect x="100" y="60" width="280" height="190" rx="4" fill="#c8dfc8" opacity=".7"/>
+            <rect x="680" y="20" width="160" height="110" rx="4" fill="#c8e8c8" opacity=".6"/>
+            <!-- Roads horizontal -->
+            <rect x="0" y="0"   width="860" height="16" fill="#f5f5f5"/>
+            <rect x="0" y="260" width="860" height="13" fill="#fff" opacity=".9"/>
+            <rect x="0" y="400" width="860" height="11" fill="#fff" opacity=".8"/>
+            <rect x="0" y="510" width="860" height="10" fill="#fff" opacity=".7"/>
+            <!-- Roads vertical -->
+            <rect x="0"   y="0" width="15"  height="600" fill="#f5f5f5"/>
+            <rect x="390" y="0" width="13"  height="600" fill="#fff" opacity=".9"/>
+            <rect x="630" y="0" width="11"  height="600" fill="#fff" opacity=".8"/>
+            <rect x="760" y="0" width="10"  height="600" fill="#fff" opacity=".7"/>
+            <!-- City blocks -->
+            <rect x="20"  y="20"  width="360" height="230" rx="6" fill="#d4e8d4" opacity=".5"/>
+            <rect x="410" y="20"  width="210" height="230" rx="6" fill="#cce0cc" opacity=".5"/>
+            <rect x="645" y="140" width="105" height="110" rx="6" fill="#d4e8d4" opacity=".5"/>
+            <rect x="775" y="140" width="75"  height="110" rx="6" fill="#cce0cc" opacity=".4"/>
+            <rect x="20"  y="280" width="360" height="110" rx="6" fill="#cce0cc" opacity=".5"/>
+            <rect x="410" y="280" width="210" height="110" rx="6" fill="#d4e8d4" opacity=".5"/>
+            <rect x="645" y="280" width="205" height="110" rx="6" fill="#cce0cc" opacity=".4"/>
+            <rect x="20"  y="420" width="185" height="80"  rx="6" fill="#d4e8d4" opacity=".5"/>
+            <rect x="215" y="420" width="165" height="80"  rx="6" fill="#cce0cc" opacity=".5"/>
+            <rect x="410" y="420" width="210" height="80"  rx="6" fill="#d4e8d4" opacity=".4"/>
+            <rect x="645" y="420" width="105" height="80"  rx="6" fill="#cce0cc" opacity=".5"/>
+            <rect x="775" y="420" width="75"  height="80"  rx="6" fill="#d4e8d4" opacity=".4"/>
+            <rect x="20"  y="525" width="360" height="65"  rx="6" fill="#cce0cc" opacity=".4"/>
+            <rect x="410" y="525" width="210" height="65"  rx="6" fill="#d4e8d4" opacity=".4"/>
+            <rect x="645" y="525" width="205" height="65"  rx="6" fill="#cce0cc" opacity=".3"/>
+            <!-- River -->
+            <path d="M380,250 Q400,300 385,400 Q370,460 390,525 Q405,570 420,600 L400,600 Q385,570 365,525 Q348,460 363,400 Q378,300 358,250Z" fill="#b3d9f5" opacity=".6"/>
+            <!-- AMB-023 green -->
+            <g transform="translate(560,80)">
+              <rect x="-30" y="-16" width="60" height="22" rx="4" fill="#1a1a2e"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="9" fill="#fff" font-family="Inter,sans-serif" font-weight="600">AMB-023</text>
+              <circle cx="0" cy="20" r="18" fill="#16a34a"/>
+              <circle cx="0" cy="20" r="13" fill="#fff" opacity=".15"/>
+              <text x="0" y="25" text-anchor="middle" font-size="14" fill="#fff">🚑</text>
+            </g>
+            <!-- AMB-031 red -->
+            <g transform="translate(800,95)">
+              <rect x="-30" y="-16" width="60" height="22" rx="4" fill="#1a1a2e"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="9" fill="#fff" font-family="Inter,sans-serif" font-weight="600">AMB-031</text>
+              <circle cx="0" cy="20" r="18" fill="#dc2626"/>
+              <circle cx="0" cy="20" r="13" fill="#fff" opacity=".15"/>
+              <text x="0" y="25" text-anchor="middle" font-size="14" fill="#fff">🚑</text>
+            </g>
+            <!-- AMB-019 red -->
+            <g transform="translate(195,320)">
+              <rect x="-30" y="-16" width="60" height="22" rx="4" fill="#1a1a2e"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="9" fill="#fff" font-family="Inter,sans-serif" font-weight="600">AMB-019</text>
+              <circle cx="0" cy="20" r="18" fill="#dc2626"/>
+              <circle cx="0" cy="20" r="13" fill="#fff" opacity=".15"/>
+              <text x="0" y="25" text-anchor="middle" font-size="14" fill="#fff">🚑</text>
+            </g>
+            <!-- AMB-087 green -->
+            <g transform="translate(720,350)">
+              <rect x="-30" y="-16" width="60" height="22" rx="4" fill="#1a1a2e"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="9" fill="#fff" font-family="Inter,sans-serif" font-weight="600">AMB-087</text>
+              <circle cx="0" cy="20" r="18" fill="#16a34a"/>
+              <circle cx="0" cy="20" r="13" fill="#fff" opacity=".15"/>
+              <text x="0" y="25" text-anchor="middle" font-size="14" fill="#fff">🚑</text>
+            </g>
+            <!-- DMCH -->
+            <g transform="translate(480,450)">
+              <rect x="-30" y="-16" width="60" height="22" rx="4" fill="#1a1a2e"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="9" fill="#fff" font-family="Inter,sans-serif" font-weight="600">DMCH</text>
+              <rect x="-18" y="8" width="36" height="30" rx="6" fill="#dc2626"/>
+              <text x="0" y="28" text-anchor="middle" font-size="18" fill="#fff">🏥</text>
+            </g>
+            <!-- AMB-014 green -->
+            <g transform="translate(128,510)">
+              <rect x="-30" y="-16" width="60" height="22" rx="4" fill="#1a1a2e"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="9" fill="#fff" font-family="Inter,sans-serif" font-weight="600">AMB-014</text>
+              <circle cx="0" cy="20" r="18" fill="#16a34a"/>
+              <circle cx="0" cy="20" r="13" fill="#fff" opacity=".15"/>
+              <text x="0" y="25" text-anchor="middle" font-size="14" fill="#fff">🚑</text>
+            </g>
+            <!-- AMB-045 red -->
+            <g transform="translate(340,555)">
+              <rect x="-30" y="-16" width="60" height="22" rx="4" fill="#1a1a2e"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="9" fill="#fff" font-family="Inter,sans-serif" font-weight="600">AMB-045</text>
+              <circle cx="0" cy="20" r="18" fill="#dc2626"/>
+              <circle cx="0" cy="20" r="13" fill="#fff" opacity=".15"/>
+              <text x="0" y="25" text-anchor="middle" font-size="14" fill="#fff">🚑</text>
+            </g>
+            <!-- AMB-067 green -->
+            <g transform="translate(690,515)">
+              <rect x="-30" y="-16" width="60" height="22" rx="4" fill="#1a1a2e"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="9" fill="#fff" font-family="Inter,sans-serif" font-weight="600">AMB-067</text>
+              <circle cx="0" cy="20" r="18" fill="#16a34a"/>
+              <circle cx="0" cy="20" r="13" fill="#fff" opacity=".15"/>
+              <text x="0" y="25" text-anchor="middle" font-size="14" fill="#fff">🚑</text>
+            </g>
+            <!-- AMB-092 red -->
+            <g transform="translate(805,575)">
+              <rect x="-30" y="-16" width="60" height="22" rx="4" fill="#1a1a2e"/>
+              <text x="0" y="-2" text-anchor="middle" font-size="9" fill="#fff" font-family="Inter,sans-serif" font-weight="600">AMB-092</text>
+              <circle cx="0" cy="20" r="18" fill="#dc2626"/>
+              <circle cx="0" cy="20" r="13" fill="#fff" opacity=".15"/>
+              <text x="0" y="25" text-anchor="middle" font-size="14" fill="#fff">🚑</text>
+            </g>
+            <rect x="0" y="592" width="860" height="12" fill="#fff" opacity=".4"/>
+            <text x="4" y="601" font-size="7" fill="#888" font-family="sans-serif">© OpenStreetMap contributors</text>
+          </svg>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/script.js"></script>
+  <script>
+    function filterAmb(type, btn) {
+      document.querySelectorAll('.amb-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.amb-item').forEach(item => {
+        item.style.display = (type === 'all' || item.dataset.status === type) ? 'flex' : 'none';
+      });
+    }
+
+    let sosTimer = null, sosProgress = 0;
+    const totalDash = 339;
+    const progressEl = document.getElementById('sosProgress');
+
+    function startSOS() {
+      sosProgress = 0;
+      sosTimer = setInterval(() => {
+        sosProgress += 3.39;
+        if (sosProgress >= totalDash) {
+          clearInterval(sosTimer);
+          progressEl.style.strokeDashoffset = 0;
+          alert('SOS Alert Sent! Emergency services have been notified.');
+          sosProgress = 0;
+          progressEl.style.strokeDashoffset = totalDash;
+          return;
+        }
+        progressEl.style.strokeDashoffset = totalDash - sosProgress;
+      }, 10);
+    }
+
+    function stopSOS() {
+      clearInterval(sosTimer);
+      const reset = setInterval(() => {
+        sosProgress = Math.max(0, sosProgress - 10);
+        progressEl.style.strokeDashoffset = totalDash - sosProgress;
+        if (sosProgress <= 0) clearInterval(reset);
+      }, 15);
+    }
+  </script>
+</body>
+</html>

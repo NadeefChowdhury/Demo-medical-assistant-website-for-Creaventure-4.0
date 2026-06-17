@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Pharmacy – HealthCare Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/pharmacy.css" />
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <!-- ── Sidebar ─────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <i class="fa-solid fa-stethoscope"></i>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item" onclick="window.location='../index.html'">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </div>
+      <div class="nav-item" onclick="window.location='page1.html'">
+        <i class="fa-solid fa-user-doctor"></i>
+        <span>Doctors</span>
+      </div>
+      <div class="nav-item" onclick="window.location='page2.html'">
+        <i class="fa-solid fa-file-medical"></i>
+        <span>Records</span>
+      </div>
+      <div class="nav-item" onclick="window.location='page3.html'">
+        <i class="fa-regular fa-circle-user"></i>
+        <span>Profile</span>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- ── Main Wrapper ─────────────────────────────────────── -->
+  <div class="main-wrapper">
+
+    <!-- ── Navbar ─────────────────────────────────────────── -->
+    <header class="navbar">
+      <button class="hamburger" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="navbar-brand">
+        <span class="greeting">Good morning,</span>
+        <span class="user-name">Nadeef Ahmed</span>
+      </div>
+      <div class="patient-id">Patient ID: <span>BD-2026-04821</span></div>
+      <div class="navbar-spacer"></div>
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search doctors, hospitals, services..." />
+      </div>
+      <div class="date-pill">Sat, 14 Jun 2026</div>
+      <div class="navbar-actions">
+        <button class="icon-btn" aria-label="Notifications">
+          <i class="fa-regular fa-bell"></i>
+          <span class="badge"></span>
+        </button>
+        <div class="avatar" title="Nadeef Ahmed">NA</div>
+      </div>
+    </header>
+
+    <!-- ── Page Content ───────────────────────────────────── -->
+    <main class="page-content">
+
+      <!-- ── Top Section ────────────────────────────────────── -->
+      <div class="pharmacy-top-grid">
+
+        <!-- Search Medicines Panel -->
+        <div class="search-medicines-panel">
+          <h2 class="search-med-title">Search Medicines</h2>
+          <p class="search-med-subtitle">Type or paste a list of medicines. Use commas or press Enter to add multiple items.</p>
+
+          <!-- Tag input -->
+          <div class="med-tag-input">
+            <span class="med-tag">Paracetamol <button class="tag-remove" onclick="removeTag(this)">×</button></span>
+            <span class="med-tag">Insulin <button class="tag-remove" onclick="removeTag(this)">×</button></span>
+            <input type="text" class="med-tag-field" placeholder="Add medicine and press Enter" id="medInput" />
+            <button class="med-search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+
+          <!-- Search row -->
+          <div class="search-row">
+            <button class="search-main-btn">Search</button>
+
+            <div class="match-toggle">
+              <span class="match-label">Match mode</span>
+              <label class="toggle-switch">
+                <input type="checkbox" checked id="matchToggle" />
+                <span class="toggle-track"></span>
+              </label>
+              <span class="match-value" id="matchValue">Match All Medicines</span>
+            </div>
+
+            <div class="filter-pills">
+              <span class="filter-pill pill-blue">Closest pharmacy with full availability</span>
+              <span class="filter-pill pill-green">Fastest delivery option</span>
+              <span class="filter-pill pill-amber">Best rated nearby</span>
+            </div>
+          </div>
+
+          <!-- Upload prescription -->
+          <div class="upload-box">
+            <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <div>
+              <div class="upload-title">Upload Prescription Image</div>
+              <div class="upload-sub">Upload an image of your prescription</div>
+            </div>
+            <input type="file" accept="image/*" style="display:none;" id="prescInput" />
+          </div>
+
+          <p class="tip-text"><strong>Tip:</strong> You can paste prescriptions or type multiple medicines separated by commas.</p>
+        </div>
+
+        <!-- Map Preview -->
+        <div class="map-preview-panel">
+          <div class="map-preview-title">Map Preview</div>
+          <div class="map-container">
+            <!-- SVG map placeholder that looks like a real map -->
+            <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+              <!-- Background -->
+              <rect width="280" height="200" fill="#e8f0e8"/>
+              <!-- Road grid -->
+              <rect x="0" y="80" width="280" height="10" fill="#fff" opacity=".8"/>
+              <rect x="0" y="130" width="280" height="8" fill="#fff" opacity=".7"/>
+              <rect x="80" y="0" width="10" height="200" fill="#fff" opacity=".8"/>
+              <rect x="160" y="0" width="8" height="200" fill="#fff" opacity=".7"/>
+              <rect x="220" y="0" width="6" height="200" fill="#fff" opacity=".6"/>
+              <!-- Blocks -->
+              <rect x="12" y="12" width="60" height="60" rx="4" fill="#d4e8d4" opacity=".7"/>
+              <rect x="95" y="12" width="58" height="60" rx="4" fill="#c8dfc8" opacity=".7"/>
+              <rect x="172" y="12" width="40" height="60" rx="4" fill="#d4e8d4" opacity=".6"/>
+              <rect x="12" y="95" width="60" height="28" rx="4" fill="#c8dfc8" opacity=".6"/>
+              <rect x="95" y="95" width="58" height="28" rx="4" fill="#d4e8d4" opacity=".6"/>
+              <rect x="172" y="95" width="40" height="28" rx="4" fill="#c8dfc8" opacity=".5"/>
+              <rect x="12" y="142" width="60" height="46" rx="4" fill="#d4e8d4" opacity=".6"/>
+              <rect x="95" y="142" width="58" height="46" rx="4" fill="#c8dfc8" opacity=".6"/>
+              <rect x="172" y="142" width="88" height="46" rx="4" fill="#d4e8d4" opacity=".5"/>
+              <!-- Water blob -->
+              <ellipse cx="240" cy="60" rx="35" ry="28" fill="#b3d9f5" opacity=".5"/>
+              <!-- Map markers -->
+              <!-- Green markers (full availability) -->
+              <circle cx="55" cy="72" r="7" fill="#16a34a"/>
+              <polygon points="55,79 51,85 59,85" fill="#16a34a"/>
+              <circle cx="55" cy="72" r="3.5" fill="#fff"/>
+
+              <circle cx="130" cy="55" r="7" fill="#16a34a"/>
+              <polygon points="130,62 126,68 134,68" fill="#16a34a"/>
+              <circle cx="130" cy="55" r="3.5" fill="#fff"/>
+
+              <circle cx="200" cy="110" r="7" fill="#16a34a"/>
+              <polygon points="200,117 196,123 204,123" fill="#16a34a"/>
+              <circle cx="200" cy="110" r="3.5" fill="#fff"/>
+
+              <!-- Amber markers (partial) -->
+              <circle cx="100" cy="110" r="7" fill="#f59e0b"/>
+              <polygon points="100,117 96,123 104,123" fill="#f59e0b"/>
+              <circle cx="100" cy="110" r="3.5" fill="#fff"/>
+
+              <circle cx="175" cy="55" r="7" fill="#f59e0b"/>
+              <polygon points="175,62 171,68 179,68" fill="#f59e0b"/>
+              <circle cx="175" cy="55" r="3.5" fill="#fff"/>
+
+              <circle cx="240" cy="145" r="7" fill="#f59e0b"/>
+              <polygon points="240,152 236,158 244,158" fill="#f59e0b"/>
+              <circle cx="240" cy="145" r="3.5" fill="#fff"/>
+
+              <!-- Red marker (missing) - center/prominent -->
+              <circle cx="148" cy="88" r="9" fill="#ef4444"/>
+              <polygon points="148,97 143,105 153,105" fill="#ef4444"/>
+              <circle cx="148" cy="88" r="4.5" fill="#fff"/>
+
+              <!-- Small red markers -->
+              <circle cx="30" cy="155" r="6" fill="#ef4444"/>
+              <polygon points="30,161 27,167 33,167" fill="#ef4444"/>
+              <circle cx="30" cy="155" r="3" fill="#fff"/>
+
+              <!-- Map attribution strip -->
+              <rect x="0" y="188" width="280" height="12" fill="#fff" opacity=".5"/>
+              <text x="4" y="197" font-size="6" fill="#888" font-family="sans-serif">© OpenStreetMap contributors</text>
+            </svg>
+          </div>
+          <p class="map-legend">Markers: green = full availability, amber = partial, red = missing</p>
+        </div>
+
+      </div><!-- /.pharmacy-top-grid -->
+
+      <!-- ── Bottom Section ─────────────────────────────────── -->
+      <div class="pharmacy-bottom-grid">
+
+        <!-- LEFT: Pharmacies with All Medicines -->
+        <div class="pharma-results-col">
+          <div class="pharma-results-header">
+            <div>
+              <h3 class="pharma-section-title">Pharmacies with All Medicines</h3>
+              <p class="pharma-section-sub">Nearby pharmacies that have every medicine you requested</p>
+            </div>
+            <span class="showing-label">Showing 3 results</span>
+          </div>
+
+          <div class="pharma-list">
+
+            <!-- Dhanmondi Care Pharmacy -->
+            <div class="pharma-card">
+              <div class="pharma-icon-box">
+                <i class="fa-solid fa-house-medical"></i>
+              </div>
+              <div class="pharma-info">
+                <div class="pharma-name-row">
+                  <span class="pharma-name">Dhanmondi Care Pharmacy</span>
+                  <span class="pharma-dist">0.8 km</span>
+                  <span class="open-badge open">Open</span>
+                </div>
+                <div class="pharma-address">House 12, Road 9, Dhanmondi, Dhaka</div>
+                <div class="pharma-meta-row">
+                  <span class="pharma-rating"><i class="fa-solid fa-star"></i> 4.8 (324)</span>
+                  <span class="avail-dot avail-green"></span>
+                  <span class="avail-text">All medicines available</span>
+                </div>
+              </div>
+              <div class="pharma-actions">
+                <div class="est-time">Estimated: 9 mins</div>
+                <div class="pharma-btns">
+                  <button class="order-btn">Order Now</button>
+                  <button class="details-btn">View Details</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Greenline Pharmacy -->
+            <div class="pharma-card">
+              <div class="pharma-icon-box">
+                <i class="fa-solid fa-kit-medical"></i>
+              </div>
+              <div class="pharma-info">
+                <div class="pharma-name-row">
+                  <span class="pharma-name">Greenline Pharmacy</span>
+                  <span class="pharma-dist">1.2 km</span>
+                  <span class="open-badge open">Open</span>
+                </div>
+                <div class="pharma-address">32/A Mirpur Road, Dhanmondi</div>
+                <div class="pharma-meta-row">
+                  <span class="pharma-rating"><i class="fa-solid fa-star"></i> 4.6 (211)</span>
+                  <span class="avail-dot avail-green"></span>
+                  <span class="avail-text">All medicines available</span>
+                </div>
+              </div>
+              <div class="pharma-actions">
+                <div class="est-time">Estimated: 12 mins</div>
+                <div class="pharma-btns">
+                  <button class="order-btn">Order Now</button>
+                  <button class="details-btn">View Details</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CarePlus Pharmacy -->
+            <div class="pharma-card">
+              <div class="pharma-icon-box">
+                <i class="fa-solid fa-truck-medical"></i>
+              </div>
+              <div class="pharma-info">
+                <div class="pharma-name-row">
+                  <span class="pharma-name">CarePlus Pharmacy</span>
+                  <span class="pharma-dist">2.0 km</span>
+                  <span class="open-badge closed">Closed</span>
+                </div>
+                <div class="pharma-address">Block B, Dhanmondi Shopping Complex</div>
+                <div class="pharma-meta-row">
+                  <span class="pharma-rating"><i class="fa-solid fa-star"></i> 4.4 (98)</span>
+                  <span class="avail-dot avail-green"></span>
+                  <span class="avail-text">All medicines available</span>
+                </div>
+              </div>
+              <div class="pharma-actions">
+                <div class="est-time opens-at">Opens 8:00 AM</div>
+                <div class="pharma-btns">
+                  <button class="order-btn">Order Now</button>
+                  <button class="details-btn">View Details</button>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /.pharma-list -->
+        </div>
+
+        <!-- RIGHT: Nearby Alternatives -->
+        <div class="alternatives-col">
+          <div class="pharma-results-header">
+            <div>
+              <h3 class="pharma-section-title">Nearby Alternatives</h3>
+              <p class="pharma-section-sub">Pharmacies with most or some medicines available</p>
+            </div>
+            <span class="showing-label">Showing 2</span>
+          </div>
+
+          <div class="alt-list">
+
+            <!-- CityFast Pharmacy -->
+            <div class="alt-card">
+              <div class="alt-top">
+                <div>
+                  <div class="alt-name">CityFast Pharmacy</div>
+                  <div class="alt-dist">1.0 km • 6 mins</div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+                  <span class="alt-label label-blue">Highly Rated</span>
+                  <button class="view-alt-btn">View Alternatives</button>
+                </div>
+              </div>
+              <div class="alt-avail">Availability: <strong>4/5</strong></div>
+              <div class="alt-meds">
+                <span class="med-pill pill-avail"><span class="dot-green"></span> Paracetamol</span>
+                <span class="med-pill pill-missing"><span class="dot-red"></span> Insulin (missing)</span>
+              </div>
+              <div class="alt-rating">Rating: 4.7 (168)</div>
+            </div>
+
+            <!-- NeighbourCare Pharmacy -->
+            <div class="alt-card">
+              <div class="alt-top">
+                <div>
+                  <div class="alt-name">NeighbourCare Pharmacy</div>
+                  <div class="alt-dist">2.4 km • 14 mins</div>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+                  <span class="alt-label label-gray">Popular</span>
+                  <button class="view-alt-btn">View Alternatives</button>
+                </div>
+              </div>
+              <div class="alt-avail">Availability: <strong>2/5</strong></div>
+              <div class="alt-missing">Missing: Insulin, Atorvastatin</div>
+              <div class="alt-rating">Rating: 4.2 (56)</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /.pharmacy-bottom-grid -->
+    </main>
+  </div>
+
+  <script src="../js/script.js"></script>
+  <script>
+    // Tag input – press Enter to add medicine tag
+    const input = document.getElementById('medInput');
+    if (input) {
+      input.addEventListener('keydown', function(e) {
+        if ((e.key === 'Enter' || e.key === ',') && this.value.trim()) {
+          e.preventDefault();
+          addTag(this.value.trim().replace(/,$/, ''));
+          this.value = '';
+        }
+      });
+    }
+
+    function addTag(name) {
+      const container = document.querySelector('.med-tag-input');
+      const inputEl   = document.getElementById('medInput');
+      const tag = document.createElement('span');
+      tag.className = 'med-tag';
+      tag.innerHTML = `${name} <button class="tag-remove" onclick="removeTag(this)">×</button>`;
+      container.insertBefore(tag, inputEl);
+    }
+
+    function removeTag(btn) {
+      btn.parentElement.remove();
+    }
+
+    // Match mode toggle label
+    const toggle = document.getElementById('matchToggle');
+    const label  = document.getElementById('matchValue');
+    if (toggle && label) {
+      toggle.addEventListener('change', function() {
+        label.textContent = this.checked ? 'Match All Medicines' : 'Match Any Medicine';
+      });
+    }
+
+    // Upload prescription click
+    const uploadBox = document.querySelector('.upload-box');
+    const prescInput = document.getElementById('prescInput');
+    if (uploadBox && prescInput) {
+      uploadBox.addEventListener('click', () => prescInput.click());
+    }
+  </script>
+</body>
+</html>

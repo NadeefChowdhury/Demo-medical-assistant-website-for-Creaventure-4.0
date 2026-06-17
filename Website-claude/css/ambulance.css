@@ -1,0 +1,319 @@
+/* ============================================================
+   ambulance.css – Book Ambulance page styles
+   ============================================================ */
+
+.amb-page {
+  display: flex;
+  height: calc(100vh - var(--navbar-h));
+  overflow: hidden;
+}
+
+/* LEFT PANEL */
+.amb-left {
+  width: 46%;
+  min-width: 340px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+}
+
+/* Emergency Hero */
+.emergency-hero {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 60%, #1e40af 100%);
+  padding: 24px 24px 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sos-wrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+}
+
+.sos-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sos-btn {
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 2.5px solid rgba(255,255,255,0.4);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 2px;
+  transition: background .15s, transform .1s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sos-btn:active { background: rgba(255,255,255,0.25); transform: scale(.97); }
+.sos-btn i { font-size: 22px; }
+.sos-label { font-size: 16px; font-weight: 800; letter-spacing: .06em; line-height: 1; }
+.sos-sub { font-size: 8px; font-weight: 600; letter-spacing: .08em; opacity: .8; }
+
+.hero-info { flex: 1; min-width: 0; }
+
+.hero-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.hero-sub {
+  font-size: 12.5px;
+  color: rgba(255,255,255,.75);
+  margin-bottom: 12px;
+}
+
+.gps-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,.9);
+  margin-bottom: 14px;
+}
+
+.gps-bar i:first-child { color: #fff; font-size: 11px; }
+.gps-check { color: #4ade80; margin-left: auto; }
+
+.emergency-numbers {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,.1);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.emg-num {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 6px;
+  gap: 2px;
+}
+
+.emg-num i { font-size: 14px; color: rgba(255,255,255,.7); margin-bottom: 2px; }
+.emg-val { font-size: 20px; font-weight: 800; color: #fff; line-height: 1; }
+.emg-name { font-size: 9.5px; color: rgba(255,255,255,.65); text-align: center; font-weight: 500; }
+
+.emg-divider {
+  width: 1px;
+  height: 44px;
+  background: rgba(255,255,255,.2);
+  flex-shrink: 0;
+}
+
+/* Ambulance List */
+.amb-list-section {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  padding: 16px 16px 0;
+}
+
+.amb-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.amb-list-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avail-count { font-size: 12px; font-weight: 500; color: var(--text-muted); }
+
+.amb-filter-tabs {
+  display: flex;
+  gap: 4px;
+  background: #e2e8f0;
+  border-radius: 20px;
+  padding: 3px;
+}
+
+.amb-tab {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.amb-tab.active { background: #1d4ed8; color: #fff; }
+
+.amb-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 16px;
+}
+
+.amb-list::-webkit-scrollbar { width: 4px; }
+.amb-list::-webkit-scrollbar-track { background: transparent; }
+.amb-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+.amb-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .15s;
+}
+
+.amb-item:hover { box-shadow: var(--shadow-md); }
+
+.amb-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: #fee2e2;
+  color: #dc2626;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.amb-info { flex: 1; min-width: 0; }
+
+.amb-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+  flex-wrap: wrap;
+}
+
+.amb-name { font-size: 13.5px; font-weight: 700; color: var(--text-primary); }
+
+.avail-badge {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.amb-type { font-size: 11.5px; color: var(--text-secondary); margin-bottom: 5px; }
+
+.amb-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.amb-meta i { font-size: 10px; }
+.eta-fast   { color: #16a34a; font-weight: 700; }
+.eta-medium { color: #d97706; font-weight: 700; }
+.star-icon  { color: #f59e0b; }
+.amb-price  { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+
+.amb-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.call-btn {
+  background: #1d4ed8;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  transition: background .15s;
+}
+
+.call-btn:hover { background: #1e40af; }
+.amb-id { font-size: 10.5px; color: var(--text-muted); font-weight: 500; }
+
+/* RIGHT PANEL: Map */
+.amb-map-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.map-title-row { display: flex; align-items: center; gap: 8px; }
+.map-title-icon { color: #ef4444; font-size: 16px; }
+.map-title { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+
+.live-map-container { flex: 1; overflow: hidden; }
+.live-map-container svg { display: block; width: 100%; height: 100%; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .amb-page { flex-direction: column; height: auto; overflow: auto; }
+  .amb-left { width: 100%; min-width: 0; overflow: visible; }
+  .amb-list { max-height: 400px; }
+  .amb-map-panel { height: 400px; flex-shrink: 0; }
+}
+
+@media (max-width: 550px) {
+  .emergency-hero { flex-direction: column; align-items: flex-start; }
+  .sos-wrap { width: 90px; height: 90px; }
+  .hero-title { font-size: 18px; }
+  .amb-item { flex-wrap: wrap; }
+  .amb-action { width: 100%; flex-direction: row; justify-content: space-between; align-items: center; }
+}

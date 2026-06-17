@@ -1,0 +1,420 @@
+/* ============================================================
+   doctors.css – Find Doctors page styles
+   ============================================================ */
+
+/* ── Filter Bar ───────────────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  gap: 0;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 140px;
+  cursor: pointer;
+}
+
+.filter-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-label i { color: #3b82f6; font-size: 11px; }
+
+.filter-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.filter-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.filter-chevron {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.filter-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+  margin: 0 12px;
+  flex-shrink: 0;
+}
+
+.apply-btn {
+  background: #16a34a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+
+.apply-btn:hover { background: #15803d; }
+
+/* ── Doctors Grid ─────────────────────────────────────────── */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ── Results Header ───────────────────────────────────────── */
+.results-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.results-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.results-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.found-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+.found-badge span {
+  background: #3b82f6;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── Doctor Cards (exact matches) ────────────────────────── */
+.doctor-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.doctor-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .18s, transform .18s;
+}
+
+.doctor-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.doc-avatar-box {
+  width: 56px; height: 56px;
+  border-radius: var(--radius-sm);
+  background: #dbeafe;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.doc-details { flex: 1; min-width: 0; }
+
+.doc-top-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.doc-card-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.doc-card-spec {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #3b82f6;
+  margin-bottom: 2px;
+}
+
+.doc-card-hospital {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.doc-card-edu {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.ai-match {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ai-match strong {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.doc-bottom-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.time-slot {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.doc-rating {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.doc-rating i { color: #f59e0b; }
+.doc-rating span { font-weight: 400; color: var(--text-muted); }
+
+.book-btn {
+  margin-left: auto;
+  background: #2563eb;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background .15s;
+  white-space: nowrap;
+}
+
+.book-btn:hover { background: #1d4ed8; }
+
+/* ── Recommended Controls ─────────────────────────────────── */
+.rec-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.ai-rec-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sort-control {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.sort-control span {
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* ── Featured Card ────────────────────────────────────────── */
+.featured-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 12px;
+  transition: box-shadow .18s;
+}
+
+.featured-card:hover { box-shadow: var(--shadow-md); }
+
+.featured-illustration {
+  width: 140px;
+  height: 130px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #e0f7f4;
+}
+
+.featured-info { flex: 1; min-width: 0; }
+
+.featured-meta {
+  margin: 8px 0 6px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.featured-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.doc-dist {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.book-instead-btn {
+  background: #16a34a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background .15s;
+  margin-left: auto;
+}
+
+.book-instead-btn:hover { background: #15803d; }
+
+/* ── Tag Badges ───────────────────────────────────────────── */
+.tag-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.tag-amber  { background: #fef9c3; color: #a16207; }
+.tag-green  { background: #dcfce7; color: #15803d; }
+.tag-blue   { background: #dbeafe; color: #1d4ed8; }
+
+/* ── Rec Small Grid ───────────────────────────────────────── */
+.rec-small-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.rec-small-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .18s;
+}
+
+.rec-small-card:hover { box-shadow: var(--shadow-md); }
+
+.rec-small-meta {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.rec-small-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .doctors-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-divider { display: none; }
+
+  .apply-btn { width: 100%; text-align: center; }
+
+  .rec-small-grid { grid-template-columns: 1fr; }
+
+  .featured-card { flex-direction: column; }
+
+  .featured-illustration { width: 100%; height: 160px; }
+
+  .book-instead-btn { margin-left: 0; }
+}
